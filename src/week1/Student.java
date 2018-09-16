@@ -1,11 +1,14 @@
 package week1;
 
+import java.sql.SQLOutput;
+
 public class Student {
-
+    // -------- Cau 1 + 3----------
     // TODO: khai báo các thuộc tính cho Student
-    private String name, email, group;
-    private int id;
+    private String name = null, email = null, group = null;
+    private int id = -1;
 
+    // --------- Cau 4 -------------
     // TODO: khai báo các phương thức getter, setter cho Student
 
     public String getName(){
@@ -14,7 +17,7 @@ public class Student {
                 return name;
             }
             else {
-                System.out.prinln("Set name first");
+                System.out.println("Set name first.");
                 return null;
             }
         }
@@ -30,7 +33,7 @@ public class Student {
         }
         catch(NullPointerException | IllegalArgumentException e){
             System.out.println(e);
-            System.out.println("Re-enter argument");
+            System.out.println("Re-enter argument.");
         }
         catch(Exception e){
             System.out.println(e);
@@ -38,12 +41,18 @@ public class Student {
     }
 
     public int getID(){
-        if(id!= null){
-            return id;
+        try{
+            if(id > 0){
+                return id;
+            }
+            else {
+                System.out.println("Set id first.");
+                return -1;
+            }
         }
-        else{
-            system.out.prinln("Set ID first");
-            return null;
+        catch(Exception e){
+            System.out.println(e);
+            return -1;
         }
     }
 
@@ -51,22 +60,75 @@ public class Student {
         try{
             id = n;
         }
-        catch(nullPointerException e){
+        catch(NullPointerException | IllegalArgumentException e){
             System.out.println(e);
+            System.out.println("Re-enter argument");
         }
-        catch(invalidParameterException e){
+        catch(Exception e){
             System.out.println(e);
         }
     }
 
-    public String getGroup(){
-        if(group!= null){
-            return name;
+    public String getGroup() {
+        try{
+            if(group!= null){
+                return group;
+            }
+            else {
+                System.out.println("Set group first.");
+                return null;
+            }
         }
-        else {
-            system.out.prinln("Set group first");
+        catch(Exception e){
+            System.out.println(e);
             return null;
         }
+    }
+
+
+    public void setGroup(String n){
+        try{
+            group = n;
+        }
+        catch(NullPointerException | IllegalArgumentException e){
+            System.out.println(e);
+            System.out.println("Re-enter argument.");
+            }
+        catch(Exception e){
+                System.out.println(e);
+        }
+    }
+
+    public String getEmail(){
+        try{
+            if(email!= null){
+                return email;
+            }
+            else {
+                System.out.println("Set email first.");
+                return null;
+            }
+        }
+        catch(Exception e){
+            System.out.println(e);
+            return null;
+        }
+    }
+
+    public void setEmail(String n){
+        try{
+            email = n;
+        }
+        catch(NullPointerException | IllegalArgumentException e){
+            System.out.println(e);
+            System.out.println("Re-enter argument.");
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+    }
+
+    //-------------------- Cau 7 -----------------------------
     /**
      * Constructor 1
      */
@@ -91,9 +153,15 @@ public class Student {
     Student(Student s) {
         // TODO:
     }
-
+    //------------- Cau 5 -------------------------------------
     String getInfo() {
         // TODO:
-        return null; // xóa dòng này sau khi cài đặt
+        if(name != null && group != null && id > 0 && email != null) {
+            return name + " " + group + " " + id + " " + email;
+        }
+        else{
+            System.out.println("Please enter student's info first");
+            return "";
+        }
     }
 }
