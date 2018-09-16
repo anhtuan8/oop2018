@@ -132,8 +132,22 @@ public class Student {
     /**
      * Constructor 1
      */
-    Student() {
+    public Student(){
         // TODO:
+        try {
+            name = "Student";
+            id = 000;
+            group = "INT22041";
+            email = "uet@vnu.edu.vn";
+        }
+        catch(Exception e){
+            System.out.println("Exception: " + e );
+            name = null;
+            id = -1;
+            email = null;
+            group = null;
+        }
+
     }
 
     /**
@@ -142,16 +156,51 @@ public class Student {
      * @param sid
      * @param em
      */
-    Student(String n, String sid, String em) {
+    public Student(String n, String sid, String em) {
         // TODO:
+        try{
+            name = n;
+            id = Integer.parseInt(sid);
+            email = em;
+            group = "INT22041";
+        }
+        catch(Exception e){
+            System.out.println("Exception: " + e );
+            name = null;
+            id = -1;
+            email = null;
+            group = null;
+        }
     }
 
     /**
      * Constructor 3
      * @param s
      */
-    Student(Student s) {
+    public Student(Student s) {
         // TODO:
+        try {
+            if (s.getInfo() != null && s.getEmail() != null && s.getID() > 0 && s.getGroup() != null) {
+                name = s.getName();
+                id = s.getID();
+                email = s.getEmail();
+                group = s.getGroup();
+            }
+            else {
+                System.out.println("Set info for student s first");
+                name = null;
+                id = -1;
+                email = null;
+                group = null;
+            }
+        }
+        catch(Exception e){
+            System.out.println("Exception: " + e );
+            name = null;
+            id = -1;
+            email = null;
+            group = null;
+        }
     }
     //------------- Cau 5 -------------------------------------
     String getInfo() {
