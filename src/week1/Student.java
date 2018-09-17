@@ -203,13 +203,18 @@ public class Student {
         }
     }
     //------------- Cau 5 -------------------------------------
-    String getInfo() {
+    public String getInfo() {
         // TODO:
-        if(name != null && group != null && id > 0 && email != null) {
-            return name + " " + group + " " + id + " " + email;
+        try {
+            if (name != null && group != null && id >= 0 && email != null) {
+                return name + " " + group + " " + id + " " + email;
+            } else {
+                System.out.println("Please enter student's info first");
+                return "";
+            }
         }
-        else{
-            System.out.println("Please enter student's info first");
+        catch (Exception e){
+            System.out.println("Exception: " + e );
             return "";
         }
     }
