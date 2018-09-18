@@ -42,7 +42,7 @@ public class Student {
 
     public int getID(){
         try{
-            if(id > 0){
+            if(id >= 0){
                 return id;
             }
             else {
@@ -180,7 +180,7 @@ public class Student {
     public Student(Student s) {
         // TODO:
         try {
-            if (s.getInfo() != null && s.getEmail() != null && s.getID() > 0 && s.getGroup() != null) {
+            if (s.getInfo() != null && s.getEmail() != null && s.getID() >= 0 && s.getGroup() != null) {
                 name = s.getName();
                 id = s.getID();
                 email = s.getEmail();
@@ -213,9 +213,11 @@ public class Student {
                 return "";
             }
         }
-        catch (Exception e){
-            System.out.println("Exception: " + e );
-            return "";
+        catch (NullPointerException e){
+            return "No student. Construct student first";
+        }
+        catch(Exception e){
+            return "Exception: " +e;
         }
     }
 }
