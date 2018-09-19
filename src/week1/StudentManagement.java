@@ -1,10 +1,7 @@
 package week1;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.HashMap;
-
-
+import java.util.HashSet;
+import java.util.Set;
 
 public class StudentManagement {
     //------------------------------
@@ -12,7 +9,7 @@ public class StudentManagement {
     // TODO: khai báo thuộc tính students là array chứa các đối tượng thuộc lớp Student (max. 100)
     private static Student[] students = new Student[100];
 
-    boolean sameGroup(Student s1, Student s2) {
+    public boolean sameGroup(Student s1, Student s2) {
         // TODO:
         try {
             return s1.getGroup().equals(s2.getGroup());
@@ -25,13 +22,47 @@ public class StudentManagement {
 
     void studentsByGroup() {
         // TODO:In danh sach hoc sinh theo lop
-        try {
-            HashMap<Student, String> studentHashMap = new HashMap<>();
+        try {/*
+            //TODO: initialize groups[]
+            String groups[] = new String[100];
 
+            boolean flag = false;
+            groups[0] = students[0].getGroup();
+            int group_size = 1;
+            for (Student student:students){
+                if(student == null)
+                    break;
+                for(String group:groups){
+                    if(student.getGroup().equals(group)){
+                        flag = true;
+                        break;
+                    }
+                }
+                if(!flag) {
+                    groups[group_size] = student.getGroup();
+                    group_size++;
+                }
+            }
+            */
 
+            Set<String> groups = new HashSet<>();
+            for(Student s:students){
+                if(s == null)
+                    break;
+                groups.add(s.getGroup());
+            }
+            //TODO:print student by group
+            for(String group:groups){
+                for(Student s: students){
+                    if(s==null)
+                        break;
+                    if(s.getGroup().equals(group))
+                        System.out.println(s.getInfo());
+                }
+            }
         }
-        catch(Exception e){
-            System.out.println("Exception: " +e);
+        catch (Exception e) {
+            System.out.println("Exception: " + e);
         }
     }
 
@@ -55,7 +86,7 @@ public class StudentManagement {
         }
     }
 
-    public static <students> void main(String[] args) {
+    public static void main(String[] args) {
         //------------ Cau 2 -----------
         Student student = new Student();
 
@@ -90,7 +121,7 @@ public class StudentManagement {
         System.out.println(students[3].getName());
         System.out.println(students[3].getInfo());
         students[4] = new Student();
-        students[4].setGroup("INT22041");
+        students[4].setGroup("INT22042");
         students[5] = new Student();
         students[5].setGroup("INT22041");
         students[6] = (new Student());
@@ -100,15 +131,19 @@ public class StudentManagement {
         System.out.println("student 4 va student 5 cung lop: " + test.sameGroup(students[4],students[5]));
         System.out.println("student 4 va student 6 cung lop: " + test.sameGroup(students[4],students[6]));
         System.out.println("student 5 va student 6 cung lop: " + test.sameGroup(students[5],students[6]));
+
+        //students[1].setGroup("INT22042");
+        /*:TODO:Test method removeStudent
         StudentManagement remove = new StudentManagement();
         remove.removeStudent("16021213");
-        remove.removeStudent("000");
+        //remove.removeStudent("000");*/
         for(Student s:students){
             if(s == null)
                 break;
-            System.out.println(students[10].getInfo());
+            System.out.println(s.getInfo());
         }
-        students[7] = new Student(students[10]);
-        students[7].getInfo();
+        System.out.println("--------------------------------------");
+        StudentManagement print = new StudentManagement();
+        print.studentsByGroup();
     }
 }

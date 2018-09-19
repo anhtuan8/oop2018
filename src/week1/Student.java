@@ -132,7 +132,7 @@ public class Student {
     /**
      * Constructor 1
      */
-    public Student(){
+    Student(){
         // TODO:
         try {
             name = "Student";
@@ -156,7 +156,7 @@ public class Student {
      * @param sid
      * @param em
      */
-    public Student(String n, String sid, String em) {
+    Student(String n, String sid, String em) {
         // TODO:
         try{
             name = n;
@@ -177,7 +177,7 @@ public class Student {
      * Constructor 3
      * @param s
      */
-    public Student(Student s) {
+    Student(Student s) {
         // TODO:
         try {
             if (s.getInfo() != null && s.getEmail() != null && s.getID() >= 0 && s.getGroup() != null) {
@@ -203,21 +203,24 @@ public class Student {
         }
     }
     //------------- Cau 5 -------------------------------------
-    public String getInfo() {
+    String getInfo() {
         // TODO:
         try {
             if (name != null && group != null && id >= 0 && email != null) {
-                return name + " " + group + " " + id + " " + email;
+                String s = name + " " + group + " " + id + " " + email;
+                return s;
             } else {
                 System.out.println("Please enter student's info first");
                 return "";
             }
         }
-        catch (NullPointerException e){
-            return "No student. Construct student first";
+        catch (java.lang.NullPointerException e){
+            System.out.println("Exception" + e);
+            return "";
         }
         catch(Exception e){
-            return "Exception: " +e;
+            System.out.println("Exception: " +e);
+            return "";
         }
     }
 }
