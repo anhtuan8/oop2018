@@ -22,29 +22,7 @@ public class StudentManagement {
 
     void studentsByGroup() {
         // TODO:In danh sach hoc sinh theo lop
-        try {/*
-            //TODO: initialize groups[]
-            String groups[] = new String[100];
-
-            boolean flag = false;
-            groups[0] = students[0].getGroup();
-            int group_size = 1;
-            for (Student student:students){
-                if(student == null)
-                    break;
-                for(String group:groups){
-                    if(student.getGroup().equals(group)){
-                        flag = true;
-                        break;
-                    }
-                }
-                if(!flag) {
-                    groups[group_size] = student.getGroup();
-                    group_size++;
-                }
-            }
-            */
-
+        try {
             Set<String> groups = new HashSet<>();
             for(Student s:students){
                 if(s == null)
@@ -137,12 +115,14 @@ public class StudentManagement {
         StudentManagement remove = new StudentManagement();
         remove.removeStudent("16021213");
         //remove.removeStudent("000");*/
+        System.out.println("Before studentsByGroup");
         for(Student s:students){
             if(s == null)
                 break;
             System.out.println(s.getInfo());
         }
         System.out.println("--------------------------------------");
+        System.out.println("After studentsByGroup");
         StudentManagement print = new StudentManagement();
         print.studentsByGroup();
     }
