@@ -112,11 +112,14 @@ public class Fraction {
         }
     }
 
-    public boolean equals(Fraction other){
+    public boolean equals(Object obj){
         try{
-            int a1=gcd(this.denominator,this.numerator);
-            int a2=gcd(other.denominator,other.numerator);
-            return (this.denominator/a1 == other.denominator/a2)&&(this.numerator == other.numerator);
+            if(obj instanceof Fraction) {
+                Fraction other = (Fraction) obj;
+                return (this.numerator*other.denominator == this.denominator*other.numerator);
+            }
+            else
+                return false;
         }
         catch(IllegalArgumentException e){
             System.out.println("Exception" + e +" .Enter fraction" );
@@ -138,8 +141,8 @@ public class Fraction {
     }
 
     public static void main(String args[]){
-        Fraction fract1= new Fraction(48,0);
-        Fraction fract2 = new Fraction(-55,68);
+        Fraction fract1= new Fraction(3,4);
+        Fraction fract2 = new Fraction(6,8);
         Fraction fract3 = fract1.add(fract2);
         Fraction fract4 = fract1.subtract(fract2);
         Fraction fract5 = fract1.multiply(fract2);
