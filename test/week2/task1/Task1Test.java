@@ -1,10 +1,10 @@
 package week2.task1;
 
+import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class Task1Test {
-
     @Test
     public void testGcd() {
         assertEquals(3, Task1.gcd(6, 9));
