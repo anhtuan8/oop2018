@@ -1,8 +1,11 @@
 package week4.task1;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class HoaQua {
     //Khai bao thuoc tinh: gia/kg va so luong(don vi kg)
-    private int pricepkg = -1, quantitykg = -1;
+    private int pricepkg , quantitykg ;
 
     //getter,setter cho cac thuoc tinh
     public int getPricepkg() {
@@ -65,21 +68,61 @@ public class HoaQua {
         }
     }
 
-    //Sap xep theo gia ban tang dan
-    void sortbyPrice(HoaQua[] fruits){
+    /**
+     * constructor 1
+     * @param pricepkg
+     * @param quantitykg
+     */
+    public HoaQua(int pricepkg,int quantitykg){
+        this.pricepkg = pricepkg;
+        this.quantitykg = quantitykg;
+    }
+
+    /**
+     * constructor2
+     */
+    public HoaQua(){
+        pricepkg = -1;
+        quantitykg = -1;
+    }
+
+    /**
+     * Ham sap xep mang hoa qua theo muc gia tang dan
+     * @param fruits
+     */
+    public void sortbyPrice(ArrayList<HoaQua> fruits){
         try{
-            int n = fruits.length;
+            int n = fruits.size();
             for (int i=0;i<n-1;i++) {
                 for(int j=0;j<n-i-1;j++){
-                    if(fruits[i].getPricepkg() > fruits[i+1].getPricepkg()){
-                        HoaQua tmp = new HoaQua();
-                        tmp = fruits[i];
-                        fruits[i]  = fruits[i+1];
-                        fruits[i+1] = tmp;
+                    if (fruits.get(j).getPricepkg() > fruits.get(j+1).getPricepkg()) {
+                        Collections.swap(fruits,j,j+1);
                     }
                 }
             }
+        }
+        catch (IllegalArgumentException e){
+            System.out.println("The input is not proper.");;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
+    /**Ham sap xep mang hoa qua theo so luong tang dan
+     *
+     * @param fruits
+     */
+    public void sortbyQuan(ArrayList<HoaQua> fruits){
+        try{
+            int n = fruits.size();
+            for (int i=0;i<n-1;i++) {
+                for(int j=0;j<n-i-1;j++){
+                    if (fruits.get(j).getQuantitykg() > fruits.get(j+1).getQuantitykg()) {
+                        Collections.swap(fruits,j,j+1);
+                    }
+                }
+            }
         }
         catch (IllegalArgumentException e){
             System.out.println("The input is not proper.");;
