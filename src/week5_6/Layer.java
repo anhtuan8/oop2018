@@ -11,6 +11,7 @@ public class Layer {
                 shapes.remove(shape);
             }
         }
+        MovingShapes.root.getChildren().removeAll(MovingShapes.triangle);
     }
 
     void init(){

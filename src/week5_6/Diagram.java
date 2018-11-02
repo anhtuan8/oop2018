@@ -4,16 +4,20 @@ import java.util.ArrayList;
 
 public class Diagram {
     ArrayList<Layer> layers = new ArrayList<>();
-
-    public void deleteCircle(){
+    public void deleteGraphicCircle(){
         for(Layer layer:layers){
-            for(Shape shape: layer.shapes){
-                if(shape instanceof Circle){
-                    layer.shapes.remove(shape);
+            MovingShapes.root.getChildren().removeAll(MovingShapes.circle);
+        }
+   }
+   public void deleteCircle(){
+            for(Layer layer:layers){
+                for(Shape shape: layer.shapes){
+                    if(shape instanceof Circle){
+                        layer.shapes.remove(shape);
+                    }
                 }
             }
-        }
-    }
+   }
 
     public void init(){
         Layer layer = new Layer();
