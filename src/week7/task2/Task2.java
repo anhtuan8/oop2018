@@ -29,7 +29,7 @@ public class Task2 {
     }
 
     public void exc3()throws ArithmeticException{
-        double a = 0;
+        int a = 0;
         System.out.println(10/a);
     }
 
@@ -76,7 +76,7 @@ public class Task2 {
        try{
             tester.exc3();
        }catch (ArithmeticException e){
-           System.out.println(e);
+           System.out.println("ArithmeticException");
        }
 
        //Classcast exception
