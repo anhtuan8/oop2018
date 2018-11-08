@@ -1,7 +1,6 @@
 package week7.task2;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class Task2 {
@@ -30,22 +29,22 @@ public class Task2 {
     }
 
     public void exc3()throws ArithmeticException{
-        double a = 0;
+        int a = 0;
         System.out.println(10/a);
     }
 
     public void exc4()throws ClassCastException{
-        Object a = "abcd";
-        System.out.println((int) a);
+        Object a = 42;
+        String s = (String) a;
+        System.out.println(s);
     }
 
     public void exc5() throws IOException{
-        FileOutputStream fo = new FileOutputStream("E_V.txt",false);
-        OutputStreamWriter streamWriter = new OutputStreamWriter(fo, StandardCharsets.UTF_8);
-//        streamWriter.write(filepath);
-//        streamWriter.write(System.getProperty("line.separator"));
-        streamWriter.flush();
-        fo.close();
+        Scanner scanner = new Scanner(new File(".\\abcd.txt"));
+        while(scanner.hasNextInt()) {
+            int s = scanner.nextInt();
+            System.out.println(s);
+        }
     }
 
     public void exc6() throws FileNotFoundException {
@@ -77,7 +76,7 @@ public class Task2 {
        try{
             tester.exc3();
        }catch (ArithmeticException e){
-           System.out.println(e);
+           System.out.println("ArithmeticException");
        }
 
        //Classcast exception
@@ -91,10 +90,9 @@ public class Task2 {
         try{
             tester.exc5();
         }catch (IOException e){
-            System.out.println(e);
+            System.out.println("IOException");
         }
 
-        //FileNotFound Exception
         try{
             tester.exc6();
         }catch (FileNotFoundException e){
