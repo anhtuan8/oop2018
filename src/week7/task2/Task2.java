@@ -40,8 +40,12 @@ public class Task2 {
     }
 
     public void exc5() throws IOException{
-        Scanner scanner = new Scanner(new File(".\\E_V.ddd"));
-
+        FileOutputStream fo = new FileOutputStream("E_V.txt",false);
+        OutputStreamWriter streamWriter = new OutputStreamWriter(fo, StandardCharsets.UTF_8);
+//        streamWriter.write(filepath);
+//        streamWriter.write(System.getProperty("line.separator"));
+        streamWriter.flush();
+        fo.close();
     }
 
     public void exc6() throws FileNotFoundException {
@@ -90,6 +94,7 @@ public class Task2 {
             System.out.println(e);
         }
 
+        //FileNotFound Exception
         try{
             tester.exc6();
         }catch (FileNotFoundException e){
